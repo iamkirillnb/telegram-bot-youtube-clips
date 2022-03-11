@@ -57,10 +57,11 @@ func (t *telegramBot) StartBot() {
 		if err != nil {
 			return err
 		}
+		t.log.Infof("user %s is looking for a song %s", c.Message().Sender.Username, treckName)
 		return c.Send(treck)
 	})
 	b.Handle("/start", func(c tele.Context) error {
-
+		t.log.Infof("user %s start use bot", c.Message().Sender.Username)
 		return c.Send(fmt.Sprintf("Привет %s %s", c.Message().Sender.FirstName, c.Message().Sender.LastName))
 	})
 
